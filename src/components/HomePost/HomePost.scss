@@ -1,0 +1,46 @@
+.homePost {
+  width: 650px;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.upperCase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+
+  > div {
+    width: 50%;
+    height: 100%;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.5s ease;
+
+    > p {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  > div:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  > div::after {
+    content: "";
+    background-color: rgb(29, 155, 240);
+    height: 5px;
+    width: 30%;
+    border-radius: 25px;
+    color: red;
+    font-weight: bold;
+  }
+}
