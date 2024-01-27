@@ -1,0 +1,95 @@
+.signupModel {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(129, 210, 203, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    top: 0;
+    left: 0;
+    font-family: sans-serif;
+  
+    > div {
+      width: 600px;
+      background: #000;
+      padding: 30px 80px;
+      border-radius: 20px;
+  
+      > :first-child {
+        text-align: end;
+  
+        > svg {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+        }
+      }
+  
+      > :nth-child(2) {
+        width: 100%;
+        font-size: 35px;
+        margin-top: 20px;
+        font-weight: 700;
+        color: white;
+  
+        > form {
+          width: 100%;
+  
+          > input {
+            width: 100%;
+            background: transparent;
+            padding: 20px;
+            border: 1px solid gray;
+            outline: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            color: white;
+            font-size: 17px;
+          }
+          > input::placeholder {
+            color: gray;
+            font-size: 17px;
+          }
+          > button {
+            background: rgb(29, 155, 240);
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            width: 100%;
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+            margin-top: 30px;
+          }
+          >p{
+            color: rgb(29, 155, 240);
+            font-size: 15px;
+            text-align: center;
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .signupModel {
+      > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    .signupModel {
+      > div {
+        padding: 30px 10px;
+  
+      }
+    }
+  }
+  
