@@ -2,10 +2,11 @@
   width: 650px;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   position: relative;
+  overflow-y: auto;
 }
 
 .upperCase {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   backdrop-filter: blur(5px);
@@ -106,7 +107,84 @@
       cursor: pointer;
     }
     > button:hover {
-        background: rgb(0, 136, 255);
+      background: rgb(0, 136, 255);
+    }
+  }
+}
+
+.allPost {
+  color: white;
+  display: flex;
+  width: 100%;
+  font-family: sans-serif;
+  border-bottom: 1px solid gray;
+
+  > :first-child {
+    background: #000;
+    height: 100%;
+    width: 60px;
+    text-align: center;
+    > img {
+      margin-top: 20px;
+      width: 35px;
+      border-radius: 100%;
+    }
+  }
+
+  > :nth-child(2) {
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+
+    > :first-child {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      > div {
+        display: flex;
+
+        > :first-child {
+          font-weight: 700;
+        }
+
+        > :nth-child(2) {
+          color: gray;
+          margin-left: 10px;
+        }
       }
+
+      > :last-child {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        transition: all 0.2s;
+      }
+
+      >:last-child:hover{
+        background: rgb(29, 155, 240);
+      }
+    }
+
+    > :nth-child(2) {
+      margin-top: 10px;
+    }
+
+    >:last-child{
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      >:last-child{
+        transform: rotate(90deg);
+      }
+    }
   }
 }
