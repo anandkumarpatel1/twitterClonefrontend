@@ -200,3 +200,9 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .createPost{
+    display: none;
+  }
+}
