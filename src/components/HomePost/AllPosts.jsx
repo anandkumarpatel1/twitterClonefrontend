@@ -6,7 +6,8 @@ import { FaRetweet } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { ImParagraphRight } from "react-icons/im";
 
-const AllPosts = () => {
+const AllPosts = ({ img }) => {
+    console.log(img)
   return (
     <div className="allPost">
       <div>
@@ -26,6 +27,7 @@ const AllPosts = () => {
           </div>
         </div>
         <div>
+          {img && <img src={img} alt="img" />}
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
           libero, soluta perspiciatis ratione consequatur dolore reiciendis
           reprehenderit, delectus ab aliquam fugiat adipisci magni natus
