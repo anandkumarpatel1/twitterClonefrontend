@@ -5,7 +5,7 @@
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  padding-top: 30px;
+ 
   padding-left: 50px;
   position: fixed;
   top: 0;
@@ -22,16 +22,14 @@
     width: 250px;
     > :first-child {
       > svg {
-        margin-left: 5px;
-        font-size: 30px;
-        cursor: pointer;
+        font-size: 35px;
       }
     }
 
     .sideBarBtn {
       margin: 10px 0;
       // width: 80%;
-      padding: 10px 20px 10px 0;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -41,10 +39,10 @@
 
       > svg {
         margin-right: 5px;
-        font-size: 25px;
+        font-size: 28px;
       }
       > p {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
       }
     }

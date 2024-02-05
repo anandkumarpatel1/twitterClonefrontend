@@ -12,7 +12,7 @@ const SideBar = () => {
   return (
     <div className="sideBar">
       <div>
-      <div>
+      <div className="sideBarBtn">
         <BsTwitterX />
       </div>
       <div className="sideBarBtn">
