@@ -1,0 +1,122 @@
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 600px;
+  background-color: black;
+  color: #e7e9ea;
+  border-right: 1px solid gray;
+  .heading {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    padding: 1rem 2rem;
+
+    cursor: pointer;
+    > div {
+      > h2 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      > p {
+        color: #71767b;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .banner {
+    width: 100%;
+    > img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .profile-user-details {
+    display: flex;
+    flex-direction: column;
+
+    .first {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      .profile {
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        width: 400px;
+        // position: absolute;
+        > img {
+          display: flex;
+          width: 150px;
+          height: 150px;
+          position: relative;
+          top: -80px;
+          border: 5px solid black;
+          border-radius: 50%;
+        }
+        > div {
+          display: flex;
+          flex-direction: column;
+          width: 200px;
+          position: relative;
+          top: -60px;
+
+          > h2 {
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          > p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #71767b;
+          }
+        }
+      }
+      .edit-profile {
+        border-radius: 20px;
+        border: 1px solid gray;
+        padding: 7px 20px;
+        &:hover {
+          background-color: #71767b27;
+        }
+      }
+    }
+
+    > p {
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .joining-date {
+      > svg {
+        font-size: 14px;
+        margin: 0 10px 0 0;
+      }
+      margin: 10px;
+      color: #71767b;
+    }
+    .profile-follower {
+      display: flex;
+
+      > p {
+        display: flex;
+        margin: 5px;
+        color: #71767b;
+        font-size: 16px;
+        > p {
+          color: white;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}
