@@ -13,7 +13,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 3rem;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
 
     cursor: pointer;
     > div {
@@ -85,6 +85,7 @@
         border-radius: 20px;
         border: 1px solid gray;
         padding: 7px 20px;
+        margin-bottom: 80px;
         &:hover {
           background-color: #71767b27;
         }
