@@ -2,8 +2,11 @@ import React from "react";
 import "./ProfileMain.scss";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaRegCalendarDays } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const ProfileMain = () => {
+  const url = window.location.pathname;
+  
   return (
     <div className="profile-main">
       <div className="heading">
@@ -45,15 +48,48 @@ const ProfileMain = () => {
         </div>
 
         <div className="profile-follower">
-          <p>
+          <h5>
             {" "}
             <p>46</p> Following{" "}
-          </p>
-          <p>
+          </h5>
+          <h5>
             {" "}
             <p>70</p> Follower{" "}
-          </p>
+          </h5>
         </div>
+      </div>
+
+      <div className="profile-link">
+        <NavLink
+          to={`/profile`}
+          style={{ color: `${url === "/profile" && "white"}` }}
+        >
+          Posts
+        </NavLink>
+        <NavLink
+          to={`/profile/replies`}
+          style={{ color: `${url === "/profile/replies" && "white"}` }}
+        >
+          Replies
+        </NavLink>
+        <NavLink
+          to={`/profile/highlights`}
+          style={{ color: `${url === "/profile/highlights" && "white"}` }}
+        >
+          Highlights
+        </NavLink>
+        <NavLink
+          to={`/profile/media`}
+          style={{ color: `${url === "/profile/media" && "white"}` }}
+        >
+          Media
+        </NavLink>
+        <NavLink
+          to={`/profile/likes`}
+          style={{ color: `${url === "/profile/likes" && "white"}` }}
+        >
+          Likes
+        </NavLink>
       </div>
     </div>
   );

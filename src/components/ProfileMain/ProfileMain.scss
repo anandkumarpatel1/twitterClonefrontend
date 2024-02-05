@@ -107,16 +107,43 @@
     .profile-follower {
       display: flex;
 
-      > p {
+      > h5 {
         display: flex;
         margin: 5px;
         color: #71767b;
         font-size: 16px;
-        > p {
+        > p{
           color: white;
           margin: 0 5px;
         }
       }
+    }
+  }
+
+  .profile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid gray;
+    width: 600px;
+
+    > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      color: #71767b;
+      font-size: 18px;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #71767b27;
+      }
+       
     }
   }
 }
