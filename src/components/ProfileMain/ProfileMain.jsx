@@ -3,6 +3,7 @@ import "./ProfileMain.scss";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaRegCalendarDays } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import ProfileContent from "./ProfileContent";
 
 const ProfileMain = () => {
   const url = window.location.pathname;
@@ -91,6 +92,8 @@ const ProfileMain = () => {
           Likes
         </NavLink>
       </div>
+
+      <ProfileContent />
     </div>
   );
 };

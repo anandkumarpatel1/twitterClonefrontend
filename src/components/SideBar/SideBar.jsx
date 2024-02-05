@@ -12,6 +12,7 @@ const SideBar = () => {
   return (
     <div className="sideBar">
       <div>
+      <div>
         <BsTwitterX />
       </div>
       <div className="sideBarBtn">
@@ -50,6 +51,8 @@ const SideBar = () => {
         </div>
         <SlOptions />
       </div>
+      </div>
+     
     </div>
   );
 };
