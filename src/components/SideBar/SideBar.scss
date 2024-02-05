@@ -1,94 +1,105 @@
 .sideBar {
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   width: 400px;
-  height: 100vh;
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
-  padding-top: 30px;
+ 
+  padding-left: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  color: #e7e9ea;
+  z-index: 1;
 
-  > :first-child {
-    width: 35%;
-    > svg {
-      font-size: 30px;
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 250px;
+    > :first-child {
+      > svg {
+        font-size: 35px;
+      }
+    }
+
+    .sideBarBtn {
+      margin: 10px 0;
+      // width: 80%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 3;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+
+      > svg {
+        margin-right: 5px;
+        font-size: 28px;
+      }
+      > p {
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+    .sideBarBtn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+    }
+
+    > button {
+      background: rgb(29, 155, 240);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      outline: none;
+      padding: 1rem 5rem;
+      
+      margin-top: 20px;
+      border-radius: 25px;
+      transition: all 0.1s ease-in-out;
       cursor: pointer;
     }
-  }
-
-  .sideBarBtn {
-    margin-top: 20px;
-    width: 80%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: sans-serif;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-
-    > svg {
-      margin: 0 30px 0 80px;
-      font-size: 30px;
+    > button:hover {
+      background: rgb(0, 136, 255);
     }
-    > p {
-      font-size: 25px;
-      font-weight: 700;
-    }
-  }
-  .sideBarBtn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-  }
 
-  > button {
-    background: rgb(29, 155, 240);
-    color: white;
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
-    outline: none;
-    padding: 15px;
-    width: 55%;
-    margin-top: 20px;
-    border-radius: 25px;
-    transition: all 0.1s ease-in-out;
-    cursor: pointer;
-  }
-  > button:hover {
-    background: rgb(0, 136, 255);
-  }
+    .bottom {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      font-family: sans-serif;
+      width: 80%;
+      justify-content: space-between;
+      font-size: 13px;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+      padding: 10px;
 
-  .bottom {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000;
-    font-family: sans-serif;
-    width: 80%;
-    justify-content: space-between;
-    font-size: 13px;
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    padding: 10px;
-
-    > img {
-      width: 50px;
-      border-radius: 100%;
+      > img {
+        width: 50px;
+        border-radius: 100%;
+      }
+      > svg {
+        margin-right: 15px;
+        font-size: 20px;
+      }
     }
-    > svg {
-      margin-right: 15px;
-      font-size: 20px;
+    .bottom:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
     }
-  }
-  .bottom:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
   }
 }
-
 @media (max-width: 1000px) {
-  .sideBar{
+  .sideBar {
     display: none;
   }
 }

@@ -4,15 +4,20 @@
   justify-content: flex-start;
   align-items: center;
   width: 600px;
+  height: 200vh;
   background-color: black;
   color: #e7e9ea;
   border-right: 1px solid gray;
+  overflow-y: auto;
+  margin-left: 400px;
   .heading {
     display: flex;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
     gap: 3rem;
+    padding: 1rem 2rem;
+    position: sticky;
     padding: 0.5rem 2rem;
 
     cursor: pointer;
@@ -108,16 +113,57 @@
     .profile-follower {
       display: flex;
 
-      > p {
+      > h5 {
         display: flex;
         margin: 5px;
         color: #71767b;
         font-size: 16px;
-        > p {
+        > p{
           color: white;
           margin: 0 5px;
         }
       }
     }
+  }
+
+  .profile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid gray;
+    width: 600px;
+
+    > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      color: #71767b;
+      font-size: 18px;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #71767b27;
+      }
+       
+    }
+  }
+
+  .profile-content{
+    display:flex;
+    height: 500px;
+    background-color: white;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .profile-main {
+    margin-left: 0;
+   
   }
 }
