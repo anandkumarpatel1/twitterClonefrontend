@@ -8,7 +8,6 @@ import MobileHeader from "../../components/HomePost/MobileHeader";
 const Profile = () => {
   return (
     <div className="profile">
-      <MobileHeader />
       <SideBar />
       <ProfileMain />
       <HomeLeft />

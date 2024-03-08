@@ -72,24 +72,6 @@ const ProfileMain = () => {
           Posts
         </NavLink>
         <NavLink
-          to={`/profile/replies`}
-          style={{ color: `${url === "/profile/replies" && "white"}` }}
-        >
-          Replies
-        </NavLink>
-        <NavLink
-          to={`/profile/highlights`}
-          style={{ color: `${url === "/profile/highlights" && "white"}` }}
-        >
-          Highlights
-        </NavLink>
-        <NavLink
-          to={`/profile/media`}
-          style={{ color: `${url === "/profile/media" && "white"}` }}
-        >
-          Media
-        </NavLink>
-        <NavLink
           to={`/profile/likes`}
           style={{ color: `${url === "/profile/likes" && "white"}` }}
         >

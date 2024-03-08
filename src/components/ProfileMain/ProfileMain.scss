@@ -61,6 +61,8 @@
   .profile-user-details {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    width: 100%;
 
     .first {
       display: flex;
@@ -145,9 +147,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    width: 100%;
     border-bottom: 1px solid gray;
-    width: 600px;
 
     > a {
       display: flex;
