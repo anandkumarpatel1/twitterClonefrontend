@@ -52,3 +52,17 @@
       -3px -3px 15px 2px rgba(255, 255, 255, 0.329);
   }
 }
+
+@media (max-width: 1000px) {
+  .search {
+    margin-left: 0;
+    padding: 0 10px;
+
+    > :first-child {
+
+        >input{
+            width: 80%;
+        }
+    }
+  }
+}
