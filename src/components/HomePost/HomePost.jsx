@@ -3,10 +3,12 @@ import "./HomePost.scss";
 import UpperHeader from "./UpperHeader";
 import CreatePost from "./CreatePost";
 import AllPosts from "./AllPosts";
+import MobileHeader from "./MobileHeader";
 
 const HomePost = () => {
   return (
     <div className="homePost">
+      <MobileHeader />
       <UpperHeader />
       <CreatePost />
       <AllPosts img="https://img.freepik.com/free-photo/portrait-beautiful-brunette-with-long-hair_144627-16306.jpg?w=360&t=st=1707016310~exp=1707016910~hmac=1f151c2e9e755bcc1c2e081b0c342fa39676b1bf564734d1bbd3bbc0ff184d36" />

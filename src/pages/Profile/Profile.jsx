@@ -3,10 +3,12 @@ import SideBar from "../../components/SideBar/SideBar";
 import "./Profile.scss"
 import ProfileMain from "../../components/ProfileMain/ProfileMain";
 import HomeLeft from "../../components/HomeLeft/HomeLeft";
+import MobileHeader from "../../components/HomePost/MobileHeader";
 
 const Profile = () => {
   return (
     <div className="profile">
+      <MobileHeader />
       <SideBar />
       <ProfileMain />
       <HomeLeft />
