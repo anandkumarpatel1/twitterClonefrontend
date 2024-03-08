@@ -1,0 +1,54 @@
+.search {
+  width: 600px;
+  height: 100vh;
+  background: #000;
+  color: aliceblue;
+  margin-left: 400px;
+  border-right: 1px solid white;
+  padding: 0 50px;
+
+  > :first-child {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    margin-top: 10px;
+    height: 50px;
+
+    > input {
+      width: 90%;
+      padding: 8px;
+      border: none;
+      outline: rgb(29, 155, 240);
+      border-radius: 15px;
+      background: transparent;
+      color: white;
+    }
+
+    > svg {
+      width: 25px;
+      height: 32px;
+    }
+
+    &:focus-within {
+      outline: 1px solid rgb(29, 155, 240);
+      background: transparent;
+
+      > svg {
+        color: rgb(29, 155, 240);
+      }
+    }
+  }
+
+  > :nth-child(2) {
+    overflow-y: scroll;
+    height: calc(100vh - 80px);
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px 2px rgba(255, 255, 255, 0.329),
+      -3px -3px 15px 2px rgba(255, 255, 255, 0.329);
+  }
+}

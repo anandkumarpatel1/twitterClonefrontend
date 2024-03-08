@@ -7,7 +7,6 @@ import { FaRegHeart } from "react-icons/fa";
 import { ImParagraphRight } from "react-icons/im";
 
 const AllPosts = ({ img }) => {
-    console.log(img)
   return (
     <div className="allPost">
       <div>

@@ -6,10 +6,10 @@ import UserCard from "./UserCard";
 const HomeLeft = () => {
   return (
     <div className="homeleft">
-      <div>
+      {/* <div>
         <IoSearch size={25} />
         <input type="text" placeholder="search" />
-      </div>
+      </div> */}
       <div>
         <p>Who to follow</p>
         <div>
