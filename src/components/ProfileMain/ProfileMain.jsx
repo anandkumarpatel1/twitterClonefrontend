@@ -56,7 +56,7 @@ const ProfileMain = () => {
               <p>Edit Profile</p>
             </div>
           </div>
-          <p>student at Bhagalpur college of egineering || web developer ||</p>
+          <p>{user?.bio}</p>
 
           <div className="joining-date">
             <FaRegCalendarDays />
