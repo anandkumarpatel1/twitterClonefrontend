@@ -5,10 +5,13 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { FaRegCalendarDays } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import AllPosts from "../HomePost/AllPosts";
+import {UserState} from '../../context/context'
 
 const ProfileMain = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
+
+  const {user} = UserState()
 
   return (
     <div className="profile-main">
@@ -33,12 +36,12 @@ const ProfileMain = () => {
         <div className="first">
           <div className="profile">
             <img
-              src="https://pbs.twimg.com/profile_images/1594766167503433728/_P77j_Yt_400x400.jpg"
+              src={user?.avatar}
               alt="userImage"
             />
             <div className="profile-details">
-              <h2>Niranjan Kumar</h2>
-              <p>@sinha_niranjan_</p>
+              <h2>{user?.name}</h2>
+              <p>@{user?.username}</p>
             </div>
           </div>
           <div className="edit-profile">

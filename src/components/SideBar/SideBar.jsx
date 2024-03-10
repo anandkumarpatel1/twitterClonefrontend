@@ -33,7 +33,7 @@ const SideBar = () => {
           <IoSearch />
           <p>Explore</p>
         </div>
-        <div className="sideBarBtn">
+        <div className="sideBarBtn" onClick={() => navigate('/img')}>
           <RiNotificationLine />
           <p>Notifications</p>
         </div>
