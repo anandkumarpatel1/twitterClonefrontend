@@ -9,16 +9,18 @@ import { IoSearch } from "react-icons/io5";
 import { RiNotificationLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import "./HomePost.scss";
+import { UserState } from "../../context/context";
 
 const MobileHeader = () => {
+  const { user } = UserState();
   const [slider, setSlider] = useState(false);
   const navigate = useNavigate();
   return (
     <>
       <div className="MobileHeader">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/1/17/Mangekyou_Sharingan_Itachi.svg"
-          alt=""
+          src={user?.avatar}
+          alt={user?.name}
           onClick={() => setSlider(!slider)}
         />
         <BsTwitterX size={25} />
@@ -32,8 +34,8 @@ const MobileHeader = () => {
             <div>
               <div>
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/1/17/Mangekyou_Sharingan_Itachi.svg"
-                  alt=""
+                  src={user?.avatar}
+                  alt={user?.name}
                   onClick={() => navigate("/profile")}
                 />
                 <RxCross2 size={30} onClick={() => setSlider(!slider)} />

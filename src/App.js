@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 const App = () => {
   return (
     <>
-    <ToastContainer position="top-center"/>
+    <ToastContainer position="top-center" autoClose={3000}/>
       <BrowserRouter>
         <UserProvider>
           <Routes>

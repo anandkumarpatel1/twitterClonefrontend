@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState();
   const [chn, setChn] = useState(false);
-  const [imgUrl, setImgUrl] = useState(null);
 
   const navigate = useNavigate();
 
@@ -60,8 +59,6 @@ export const UserProvider = ({ children }) => {
         setUser,
         chn,
         setChn,
-        imgUrl,
-        setImgUrl,
       }}
     >
       {children}

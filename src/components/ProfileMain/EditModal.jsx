@@ -8,18 +8,17 @@ import { storage } from "../../firebase";
 import axios from "axios";
 
 const EditModal = ({ setEditModal }) => {
-  const { user, setLoading, chn, setChn, imgUrl, setImgUrl } = UserState();
+  const { user, setLoading, chn, setChn } = UserState();
 
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState(user?.name);
   const [bio, setBio] = useState(user?.bio);
 
-  let url;
   const submitHandler = async () => {
     try {
       setLoading(true);
       if (avatar) {
-        const storageRef = ref(storage, `files/${user.name}`);
+        const storageRef = ref(storage, `files/${user._id}`);
         const uploadTask = uploadBytesResumable(storageRef, avatar);
         uploadTask.on(
           "state_changed",
@@ -31,19 +30,23 @@ const EditModal = ({ setEditModal }) => {
           (error) => {
             toast(error);
           },
-          async () => {
-            try {
-              const downloadURL =
-                await uploadTask.snapshot.ref.getDownloadURL();
-                setImgUrl(downloadURL);
-                console.log(downloadURL);
-            } catch (error) {
-              console.error("Error getting download URL:", error);
-            }
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              dataSender(downloadURL);
+            });
           }
         );
+      } else {
+        dataSender();
       }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
 
+  const dataSender = async (imgUrl) => {
+    try {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -58,8 +61,6 @@ const EditModal = ({ setEditModal }) => {
         { name, bio, avatar: imgUrl },
         config
       );
-      console.log(imgUrl);
-
       setLoading(false);
       setChn(!chn);
     } catch (error) {
@@ -67,6 +68,7 @@ const EditModal = ({ setEditModal }) => {
       setLoading(false);
     }
   };
+
   return (
     <div className="editModal">
       <div>
