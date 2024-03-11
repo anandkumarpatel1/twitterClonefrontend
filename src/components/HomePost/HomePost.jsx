@@ -21,6 +21,7 @@ const HomePost = () => {
           {allPosts &&
             allPosts.map((item, index) => (
               <AllPosts
+                key={index}
                 name={item?.admin?.name}
                 username={item?.admin?.username}
                 avatar={item?.admin?.avatar}
