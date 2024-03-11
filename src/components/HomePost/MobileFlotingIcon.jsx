@@ -18,7 +18,6 @@ const MobileFlotingIcon = () => {
   const { user, loading, setLoading, chn, setChn } = UserState();
   const navigate = useNavigate();
 
-
   const submitHandler = async () => {
     try {
       setLoading(true);
