@@ -24,7 +24,6 @@ const MobileFlotingIcon = () => {
       setLoading(true);
       setMobileTweet(!mobileTweet);
       if (postImg) {
-        console.log(postImg);
         const storageRef = ref(
           storage,
           `posts/${user._id}/${Math.round(Math.random() * 100)}`
