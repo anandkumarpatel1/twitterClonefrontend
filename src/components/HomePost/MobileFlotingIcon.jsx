@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "./HomePost.scss";
 import { useNavigate } from "react-router-dom";
+import { BsFeather } from "react-icons/bs";
+import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
 import { UserState } from "../../context/context";
-import { CiImageOn } from "react-icons/ci";
 import { toast } from "react-toastify";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../firebase";
-import axios from "axios";
+import { CiImageOn } from "react-icons/ci";
 
-const CreatePost = () => {
-  const [postImg, setPostImg] = useState();;
+const MobileFlotingIcon = () => {
+  const [postImg, setPostImg] = useState();
   const [desc, setDesc] = useState();
+  const [mobileTweet, setMobileTweet] = useState(false);
 
   const { user, loading, setLoading, chn, setChn } = UserState();
   const navigate = useNavigate();
@@ -19,6 +22,7 @@ const CreatePost = () => {
     try {
       setLoading(true);
       if (postImg) {
+        console.log(postImg)
         const storageRef = ref(
           storage,
           `posts/${user._id}/${Math.round(Math.random() * 100)}`
@@ -41,6 +45,7 @@ const CreatePost = () => {
           }
         );
       } else {
+        console.log('dlfjldk')
         dataSender();
       }
     } catch (error) {
@@ -66,47 +71,49 @@ const CreatePost = () => {
         config
       );
       setLoading(false);
+      setMobileTweet(!mobileTweet)
       setChn(!chn);
     } catch (error) {
       toast.error(error.response.data.message);
       setLoading(false);
     }
   };
-
   return (
-    <div className="createPost">
-      <div>
-        <img
-          src={user?.avatar}
-          alt={user?.name}
-          onClick={() => navigate("/profile")}
-        />
+    <>
+      <div className="floatIcon">
+        <BsFeather onClick={() => setMobileTweet(!mobileTweet)} />
       </div>
-      <div>
+      <div className={`mobilePost ${mobileTweet ? `active` : ``}`}>
         <div>
-          <textarea
-            placeholder="What is happing?!"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          ></textarea>
+          <RxCross2 onClick={() => setMobileTweet(!mobileTweet)} />
+          <p>New tweet</p>
         </div>
         <div>
           <div>
-            <input
-              type="file"
-              id="file"
-              accept="image/*"
-              onChange={(e) => setPostImg(e.target.files[0])}
-            />
-            <label htmlFor="file">
-              <CiImageOn />
-            </label>
+            <textarea
+              placeholder="What is happing?!"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            ></textarea>
           </div>
-          <button onClick={submitHandler}>Post</button>
+          <div className="mobileChooseFile">
+            <div>
+              <input
+                type="file"
+                id="file"
+                accept="image/*"
+                onChange={(e) => setPostImg(e.target.files[0])}
+              />
+              <label htmlFor="file">
+                <CiImageOn />
+              </label>
+            </div>
+            <button onClick={submitHandler}>Post</button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default CreatePost;
+export default MobileFlotingIcon;

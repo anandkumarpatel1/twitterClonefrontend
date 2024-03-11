@@ -6,31 +6,28 @@ import { FaRetweet } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { ImParagraphRight } from "react-icons/im";
 
-const AllPosts = ({ img }) => {
+const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
   return (
     <div className="allPost">
       <div>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/1/17/Mangekyou_Sharingan_Itachi.svg"
-          alt="user"
+          src={avatar}
+          alt={name}
         />
       </div>
       <div>
         <div>
           <div>
-            <p>name</p>
-            <p>@name</p>
+            <p>{name}</p>
+            <p>@{username}</p>
           </div>
           <div>
             <SlOptions />
           </div>
         </div>
         <div>
-          {img && <img src={img} alt="img" />}
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-          libero, soluta perspiciatis ratione consequatur dolore reiciendis
-          reprehenderit, delectus ab aliquam fugiat adipisci magni natus
-          excepturi, non mollitia accusamus illum ipsa?
+          {postImg && <img src={postImg} alt="img" />}
+          {desc}
         </div>
         <div>
           <BiMessageRounded size={20} />
