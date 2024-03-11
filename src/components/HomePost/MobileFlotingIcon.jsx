@@ -18,11 +18,13 @@ const MobileFlotingIcon = () => {
   const { user, loading, setLoading, chn, setChn } = UserState();
   const navigate = useNavigate();
 
+
   const submitHandler = async () => {
     try {
       setLoading(true);
+      setMobileTweet(!mobileTweet);
       if (postImg) {
-        console.log(postImg)
+        console.log(postImg);
         const storageRef = ref(
           storage,
           `posts/${user._id}/${Math.round(Math.random() * 100)}`
@@ -45,7 +47,7 @@ const MobileFlotingIcon = () => {
           }
         );
       } else {
-        console.log('dlfjldk')
+        console.log("dlfjldk");
         dataSender();
       }
     } catch (error) {
@@ -71,7 +73,6 @@ const MobileFlotingIcon = () => {
         config
       );
       setLoading(false);
-      setMobileTweet(!mobileTweet)
       setChn(!chn);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -104,9 +105,6 @@ const MobileFlotingIcon = () => {
                 accept="image/*"
                 onChange={(e) => setPostImg(e.target.files[0])}
               />
-              <label htmlFor="file">
-                <CiImageOn />
-              </label>
             </div>
             <button onClick={submitHandler}>Post</button>
           </div>
