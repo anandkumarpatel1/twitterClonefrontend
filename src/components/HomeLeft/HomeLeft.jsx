@@ -2,8 +2,10 @@ import React from "react";
 import "./HomeLeft.scss";
 import { IoSearch } from "react-icons/io5";
 import UserCard from "./UserCard";
+import { UserState } from "../../context/context";
 
 const HomeLeft = () => {
+  const { allUsers } = UserState();
   return (
     <div className="homeleft">
       {/* <div>
@@ -13,34 +15,16 @@ const HomeLeft = () => {
       <div>
         <p>Who to follow</p>
         <div>
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
+          {allUsers &&
+            allUsers?.map((item, index) => (
+              <UserCard
+                id={item?._id}
+                img={item?.avatar}
+                name={item?.name}
+                username={item?.username}
+                key={index}
+              />
+            ))}
         </div>
       </div>
     </div>

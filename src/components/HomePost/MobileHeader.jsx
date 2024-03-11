@@ -10,11 +10,18 @@ import { RiNotificationLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import "./HomePost.scss";
 import { UserState } from "../../context/context";
+import { toast } from "react-toastify";
 
 const MobileHeader = () => {
   const { user } = UserState();
   const [slider, setSlider] = useState(false);
   const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    document.cookie = `token=${null};max-age= 0`;
+    toast.success("logout successfull");
+    navigate("/login");
+  };
   return (
     <>
       <div className="MobileHeader">
@@ -80,7 +87,7 @@ const MobileHeader = () => {
                   <GoGear size={35} />
                   Setting
                 </p>
-                <p>
+                <p onClick={logoutHandler}>
                   <HiOutlineLogout size={35} />
                   Logout
                 </p>

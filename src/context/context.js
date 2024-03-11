@@ -9,11 +9,14 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState();
   const [chn, setChn] = useState(false);
+  const [allUsers, setAllUsers] = useState();
+  const [idUser, setIdUser] = useState();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchUser();
+    fetchAllUsers();
   }, [chn]);
 
   const fetchUser = async () => {
@@ -50,6 +53,33 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const fetchAllUsers = async () => {
+    try {
+      setLoading(true);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+        },
+        withCredentials: true,
+        sameSite: "None",
+      };
+
+      const { data } = await axios.get(
+        "https://backendtwitter.vercel.app/api/v1/users/allusers",
+        config
+      );
+
+      if (data) {
+        setAllUsers(data?.users);
+        setLoading(false);
+      }
+    } catch (error) {
+      toast(error.response?.data?.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -59,6 +89,10 @@ export const UserProvider = ({ children }) => {
         setUser,
         chn,
         setChn,
+        allUsers,
+        setAllUsers,
+        idUser,
+        setIdUser,
       }}
     >
       {children}

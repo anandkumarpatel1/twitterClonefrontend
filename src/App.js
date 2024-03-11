@@ -6,6 +6,7 @@ import Profile from "./pages/Profile/Profile";
 import Search from "./pages/Search/Search";
 import { UserProvider } from "./context/context";
 import { ToastContainer } from 'react-toastify';
+import User from "./pages/User/User";
 
 const App = () => {
   return (
@@ -16,8 +17,9 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />
-            <Route path="/profile/" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/user/:id" element={<User />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>
