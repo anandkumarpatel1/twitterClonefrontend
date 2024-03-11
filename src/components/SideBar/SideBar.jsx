@@ -9,10 +9,12 @@ import { CiCircleMore } from "react-icons/ci";
 import { IoPersonOutline } from "react-icons/io5";
 import { SlOptions } from "react-icons/sl";
 import {toast} from 'react-toastify'
+import { UserState } from "../../context/context";
 
 const SideBar = () => {
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
+  const {user} = UserState()
 
   const logoutHandler = () => {
     document.cookie = `token=${null};max-age= 0`;
@@ -54,12 +56,12 @@ const SideBar = () => {
         <div className="bottom">
           <div onClick={logoutHandler}>Logout Accout</div>
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/1/17/Mangekyou_Sharingan_Itachi.svg"
+            src={user?.avatar}
             alt="user"
           />
           <div>
-            <p>Anand Kumar</p>
-            <p>@anandkumar</p>
+            <p>{user?.name}</p>
+            <p>@{user?.username}</p>
           </div>
           <SlOptions />
         </div>
