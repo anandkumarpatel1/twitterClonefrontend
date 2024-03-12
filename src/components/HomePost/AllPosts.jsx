@@ -9,6 +9,9 @@ import { ImParagraphRight } from "react-icons/im";
 const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
   return (
     <div className="allPost">
+      {
+        console.log(name)
+      }
       <div>
         <img
           src={avatar}

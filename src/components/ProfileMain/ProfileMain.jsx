@@ -95,19 +95,18 @@ const ProfileMain = () => {
             </NavLink>
           </div>
 
-          {myPosts &&
-            myPosts.map((item, index) => (
+          {idUser &&
+            idUser?.posts.map((item, index) => (
               <AllPosts
                 key={index}
-                name={user.name}
-                username={user.username}
-                avatar={user?.avatar}
+                name={id ? idUser.name : user.name}
+                username={id ? idUser.username : user.username}
+                avatar={id ? idUser?.avatar : user?.avatar}
                 userId={item?.admin?._id}
                 desc={item?.desc}
                 postImg={item?.postImg}
               />
             ))}
-          
         </div>
       )}
       {editModal && <EditModal setEditModal={setEditModal} />}
