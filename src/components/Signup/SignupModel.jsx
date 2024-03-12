@@ -38,7 +38,6 @@ const SignupModel = ({ setSignModel }) => {
       );
 
       if (data) {
-        console.log(data)
         toast.success(data?.message);
         setSignModel(false)
         setName("")

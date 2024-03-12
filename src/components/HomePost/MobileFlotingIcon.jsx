@@ -45,7 +45,7 @@ const MobileFlotingIcon = () => {
           }
         );
       } else {
-        console.log("dlfjldk");
+
         dataSender();
       }
     } catch (error) {

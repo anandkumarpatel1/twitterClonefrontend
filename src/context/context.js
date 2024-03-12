@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
   const [allUsers, setAllUsers] = useState();
   const [idUser, setIdUser] = useState();
   const [allPosts, setAllPosts] = useState();
+  const [myPosts, setMyPosts] = useState();
 
   const navigate = useNavigate();
 
@@ -41,6 +42,7 @@ export const UserProvider = ({ children }) => {
 
         if (data) {
           setUser(data?.user);
+          setMyPosts(data?.posts)
           toast.success(data?.message);
           navigate("/");
           setLoading(false);
@@ -124,6 +126,8 @@ export const UserProvider = ({ children }) => {
         setIdUser,
         allPosts,
         setAllPosts,
+        myPosts,
+        setMyPosts
       }}
     >
       {children}
