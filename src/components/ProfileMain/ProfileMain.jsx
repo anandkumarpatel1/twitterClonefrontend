@@ -8,6 +8,8 @@ import AllPosts from "../HomePost/AllPosts";
 import { UserState } from "../../context/context";
 import EditModal from "./EditModal";
 import Loader from "../Loader/Loader";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const ProfileMain = () => {
   const url = window.location.pathname;
@@ -16,6 +18,32 @@ const ProfileMain = () => {
 
   const { user, loading, idUser, myPosts } = UserState();
   const { id } = useParams();
+
+  const followHandler = async () => {
+    try {
+      if (document.cookie) {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+          },
+          withCredentials: true,
+          sameSite: "None",
+        };
+
+        const { data } = await axios.put(
+          `https://backendtwitter.vercel.app/api/v1/users/follow/${id}`,
+          config
+        );
+
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <>
@@ -54,12 +82,19 @@ const ProfileMain = () => {
                   <p>@{id ? idUser?.username : user?.username}</p>
                 </div>
               </div>
-              <div
-                className="edit-profile"
-                onClick={() => setEditModal(!editModal)}
-              >
-                <p>{id ? "Follow" : "Edit Profile"}</p>
-              </div>
+
+              {id !== user._id ? (
+                <div className="edit-profile">
+                  <p onClick={followHandler}>Follow</p>
+                </div>
+              ) : (
+                <div
+                  className="edit-profile"
+                  onClick={() => setEditModal(!editModal)}
+                >
+                  <p>Edit Profile</p>
+                </div>
+              )}
             </div>
             <p>{id ? idUser?.bio : user?.bio}</p>
 
@@ -95,7 +130,8 @@ const ProfileMain = () => {
             </NavLink>
           </div>
 
-          {idUser &&
+          {id &&
+            idUser &&
             idUser?.posts.map((item, index) => (
               <AllPosts
                 key={index}
@@ -103,6 +139,19 @@ const ProfileMain = () => {
                 username={id ? idUser.username : user.username}
                 avatar={id ? idUser?.avatar : user?.avatar}
                 userId={item?.admin?._id}
+                desc={item?.desc}
+                postImg={item?.postImg}
+              />
+            ))}
+          {!id &&
+            myPosts &&
+            myPosts.map((item, index) => (
+              <AllPosts
+                key={index}
+                name={user?.name}
+                username={user?.username}
+                avatar={user?.avatar}
+                userId={user?._id}
                 desc={item?.desc}
                 postImg={item?.postImg}
               />

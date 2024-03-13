@@ -16,6 +16,9 @@ const SideBar = () => {
   const navigate = useNavigate();
   const {user} = UserState()
 
+  const profileHandler = () =>{
+    navigate('/profile')
+  }
   const logoutHandler = () => {
     document.cookie = `token=${null};max-age= 0`;
     toast.success('logout successfull')
@@ -43,7 +46,7 @@ const SideBar = () => {
           <BsTwitterX />
           <p>Premium</p>
         </div>
-        <div className="sideBarBtn" onClick={() => navigate("/profile")}>
+        <div className="sideBarBtn" onClick={profileHandler}>
           <IoPersonOutline />
           <p>Profile</p>
         </div>

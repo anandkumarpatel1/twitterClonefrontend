@@ -75,8 +75,8 @@
         height: 150px;
         width: 400px;
         // position: absolute;
-        
-        >div{
+
+        > div {
           width: 160px;
           height: 160px;
 
@@ -115,6 +115,8 @@
         border: 1px solid gray;
         padding: 7px 20px;
         margin-bottom: 80px;
+        cursor: pointer;
+
         &:hover {
           background-color: #71767b27;
         }
@@ -214,7 +216,7 @@
         justify-content: center;
         align-items: center;
 
-        >svg{
+        > svg {
           cursor: pointer;
         }
 
@@ -244,7 +246,7 @@
         border-radius: 100%;
       }
 
-      >input{
+      > input {
         width: 100%;
         margin-top: 10px;
         border-radius: 10px;
@@ -257,7 +259,7 @@
         padding: 20px;
         border: 1px solid gray;
 
-        &::placeholder{
+        &::placeholder {
           color: white;
           font-weight: 600;
           font-size: 15px;

@@ -24,7 +24,6 @@ const LoginModel = ({ setLoginModel }) => {
       const config = {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${document.cookie.split("=")[1]}`,
         },
         withCredentials: true,
         sameSite: "None",

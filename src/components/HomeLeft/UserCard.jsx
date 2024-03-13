@@ -1,16 +1,15 @@
 import React from "react";
 import "./HomeLeft.scss";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import { UserState } from "../../context/context";
 import { toast } from "react-toastify";
 
 const UserCard = ({ id, img, name, username }) => {
-
   const navigate = useNavigate();
   const { user, loading, setLoading, idUser, setIdUser } = UserState();
 
-  const userHandler = async () =>{
+  const userHandler = async () => {
     try {
       setLoading(true);
       const config = {
@@ -30,13 +29,14 @@ const UserCard = ({ id, img, name, username }) => {
       if (data) {
         setIdUser(data?.user);
       }
-      navigate(`/user/${id}`)
+
+      navigate(`/user/${id}`);
       setLoading(false);
     } catch (error) {
       toast.error(error?.response?.data?.message);
       setLoading(false);
     }
-  }
+  };
   return (
     <div className="userCard" onClick={userHandler}>
       <div>
