@@ -37,7 +37,7 @@ const LoginModel = ({ setLoginModel }) => {
       );
 
       if (data) {
-        document.cookie = `token=${data?.token}`;
+        document.cookie = `token=${data?.token}; max-age= 8,64,000`;
         setUser(data?.user);
         setChn(!chn);
         toast.success(data?.message);
