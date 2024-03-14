@@ -21,7 +21,7 @@ const HomePost = () => {
           <UpperHeader slider={slider} setSlider={setSlider} />
           <CreatePost />
           {slider === "all"
-            ? allPosts.map((item, index) => (
+            ? allPosts?.map((item, index) => (
                 <AllPosts
                   key={index}
                   name={item?.admin?.name}
@@ -32,7 +32,7 @@ const HomePost = () => {
                   postImg={item?.postImg}
                 />
               ))
-            : followingPosts.map((item, index) => (
+            : followingPosts?.map((item, index) => (
                 <AllPosts
                   key={index}
                   name={item?.admin?.name}
