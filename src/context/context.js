@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
   const [idUser, setIdUser] = useState();
   const [allPosts, setAllPosts] = useState();
   const [myPosts, setMyPosts] = useState();
+  const [followingPosts, setFollowingPosts] = useState();
 
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ export const UserProvider = ({ children }) => {
     fetchUser();
     fetchAllUsers();
     fetchAllPosts();
+    fetchFollowingPosts();
   }, [chn]);
 
   const fetchUser = async () => {
@@ -42,7 +44,7 @@ export const UserProvider = ({ children }) => {
 
         if (data) {
           setUser(data?.user);
-          setMyPosts(data?.posts)
+          setMyPosts(data?.posts);
           toast.success(data?.message);
           navigate("/");
           setLoading(false);
@@ -84,7 +86,7 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const fetchAllPosts = async () =>{
+  const fetchAllPosts = async () => {
     try {
       setLoading(true);
       const config = {
@@ -109,7 +111,34 @@ export const UserProvider = ({ children }) => {
       toast(error.response?.data?.message);
       setLoading(false);
     }
-  }
+  };
+
+  const fetchFollowingPosts = async () => {
+    try {
+      setLoading(true);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+        },
+        withCredentials: true,
+        sameSite: "None",
+      };
+
+      const { data } = await axios.get(
+        "https://backendtwitter.vercel.app/api/v1/users/following/posts",
+        config
+      );
+
+      if(data){
+        setFollowingPosts(data?.posts);
+        setLoading(false);
+      }
+    } catch (error) {
+      toast(error.response?.data?.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -127,7 +156,9 @@ export const UserProvider = ({ children }) => {
         allPosts,
         setAllPosts,
         myPosts,
-        setMyPosts
+        setMyPosts,
+        followingPosts,
+        setFollowingPosts,
       }}
     >
       {children}

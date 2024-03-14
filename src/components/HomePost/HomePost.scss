@@ -28,6 +28,7 @@
     align-items: center;
     flex-direction: column;
     transition: all 0.5s ease;
+    cursor: pointer;
 
     > p {
       width: 50%;
@@ -37,7 +38,7 @@
   > div:hover {
     background: rgba(255, 255, 255, 0.3);
   }
-  > div::after {
+  > .active::after {
     content: "";
     background-color: rgb(29, 155, 240);
     height: 5px;

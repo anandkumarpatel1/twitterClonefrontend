@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomePost.scss";
 import UpperHeader from "./UpperHeader";
 import CreatePost from "./CreatePost";
@@ -8,7 +8,9 @@ import { UserState } from "../../context/context";
 import Loader from "../Loader/Loader";
 
 const HomePost = () => {
-  const { loading, allPosts } = UserState();
+  const { loading, allPosts, followingPosts } = UserState();
+  const [slider, setSlider] = useState("all");
+
   return (
     <>
       {loading ? (
@@ -16,20 +18,31 @@ const HomePost = () => {
       ) : (
         <div className="homePost">
           <MobileHeader />
-          <UpperHeader />
+          <UpperHeader slider={slider} setSlider={setSlider} />
           <CreatePost />
-          {allPosts &&
-            allPosts.map((item, index) => (
-              <AllPosts
-                key={index}
-                name={item?.admin?.name}
-                username={item?.admin?.username}
-                avatar={item?.admin?.avatar}
-                userId={item?.admin?._id}
-                desc={item?.desc}
-                postImg={item?.postImg}
-              />
-            ))}
+          {slider === "all"
+            ? allPosts.map((item, index) => (
+                <AllPosts
+                  key={index}
+                  name={item?.admin?.name}
+                  username={item?.admin?.username}
+                  avatar={item?.admin?.avatar}
+                  userId={item?.admin?._id}
+                  desc={item?.desc}
+                  postImg={item?.postImg}
+                />
+              ))
+            : followingPosts.map((item, index) => (
+                <AllPosts
+                  key={index}
+                  name={item?.admin?.name}
+                  username={item?.admin?.username}
+                  avatar={item?.admin?.avatar}
+                  userId={item?.admin?._id}
+                  desc={item?.desc}
+                  postImg={item?.postImg}
+                />
+              ))}
         </div>
       )}
     </>
