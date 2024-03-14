@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileMain.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -15,33 +15,57 @@ const ProfileMain = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
   const [editModal, setEditModal] = useState(false);
+  const [followed, setFollowed] = useState(false);
 
-  const { user, loading, idUser, myPosts } = UserState();
+  const { user,setLoading, loading, idUser, myPosts, chn, setChn } = UserState();
   const { id } = useParams();
+
+  useEffect(() => {
+    followedFun();
+  }, [followed]);
+
+  const followedFun = () => {
+    let follow;
+    if (id) {
+      follow = user.followings.indexOf(id);
+      console.log(follow);
+    }
+
+    if (follow === -1) {
+      setFollowed(false);
+      return;
+    }
+
+    setFollowed(true);
+  };
 
   const followHandler = async () => {
     try {
+      setLoading(true)
       if (document.cookie) {
         const config = {
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
             Authorization: `Bearer ${document.cookie.split("=")[1]}`,
           },
           withCredentials: true,
           sameSite: "None",
         };
 
-        const { data } = await axios.put(
+        const { data } = await axios.get(
           `https://backendtwitter.vercel.app/api/v1/users/follow/${id}`,
           config
         );
-
-        console.log(data);
+        toast.success(data?.message);
+        setChn(!chn)
+        setLoading(false)
       }
     } catch (error) {
       console.log(error);
-
       toast.error(error.response.data.message);
+      setLoading(false)
+
     }
   };
 
@@ -83,9 +107,14 @@ const ProfileMain = () => {
                 </div>
               </div>
 
-              {id !== user._id ? (
+              {id && id !== user._id ? (
                 <div className="edit-profile">
-                  <p onClick={followHandler}>Follow</p>
+                  <p onClick={followHandler}>
+                    {
+                      console.log(followed)
+                    }
+                    {followed ? "Unfollow" : "Follow"}
+                  </p>
                 </div>
               ) : (
                 <div
@@ -105,12 +134,14 @@ const ProfileMain = () => {
 
             <div className="profile-follower">
               <h5>
-                {" "}
-                <p>46</p> Following{" "}
+                <p>
+                  {id ? idUser?.followings.length : user?.followings.length}
+                </p>
+                Following
               </h5>
               <h5>
-                {" "}
-                <p>70</p> Follower{" "}
+                <p>{id ? idUser?.followers.length : user?.followers.length}</p>{" "}
+                Follower
               </h5>
             </div>
           </div>
