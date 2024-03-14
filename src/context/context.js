@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
   const [allPosts, setAllPosts] = useState();
   const [myPosts, setMyPosts] = useState();
   const [followingPosts, setFollowingPosts] = useState();
+  const [searchUser, setSearchUser] = useState();
 
   const navigate = useNavigate();
 
@@ -130,7 +131,7 @@ export const UserProvider = ({ children }) => {
         config
       );
 
-      if(data){
+      if (data) {
         setFollowingPosts(data?.posts);
         setLoading(false);
       }
@@ -159,6 +160,8 @@ export const UserProvider = ({ children }) => {
         setMyPosts,
         followingPosts,
         setFollowingPosts,
+        searchUser,
+        setSearchUser,
       }}
     >
       {children}

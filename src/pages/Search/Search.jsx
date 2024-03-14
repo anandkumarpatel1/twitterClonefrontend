@@ -8,7 +8,7 @@ import MobileHeader from "../../components/HomePost/MobileHeader";
 const Search = () => {
   return (
     <>
-        <MobileHeader />
+      <MobileHeader />
       <div className="searchPage">
         <SideBar />
         <SearchMain />
