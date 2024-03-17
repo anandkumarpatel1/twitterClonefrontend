@@ -2,10 +2,11 @@ import React from "react";
 import "./ProfileMain.scss";
 import { RxCross2 } from "react-icons/rx";
 import { UserState } from "../../context/context";
+import { useParams } from "react-router-dom";
 
 const StatusModal = ({ setStatusModal }) => {
-
-    const {user} = UserState()
+    const {user, idUser} = UserState()
+    const { id } = useParams();
   return (
     <div className="statusModel">
       <div>
@@ -15,7 +16,7 @@ const StatusModal = ({ setStatusModal }) => {
         </div>
         <div>
           <video
-            src={user?.status}
+            src={id ? idUser?.status : user?.status}
             autoPlay
             controls
           ></video>
