@@ -50,7 +50,7 @@
 }
 
 .createPost {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   //   background: red;
   height: 150px;
@@ -254,6 +254,44 @@
   display: none;
 }
 
+.statusBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 130px;
+  position: relative;
+
+  > div {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    border-top: 5px solid rgba(255, 0, 0, 0.7);
+    border-right: 5px solid rgba(0, 128, 0, 0.7);
+    border-left: 5px solid rgba(0, 0, 255, 0.7);
+    border-bottom: 5px solid rgba(255, 255, 0, 0.7);
+    animation: loading 3s ease-in-out infinite;
+    cursor: pointer;
+  }
+
+  > input {
+    display: none;
+  }
+
+  > label {
+    position: fixed;
+    top: 10;
+    width: 100px;
+    height: 100px;
+    > img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
 @media (max-width: 1000px) {
   .homePost {
     margin-left: 0;
@@ -406,7 +444,7 @@
       width: 100%;
       height: 40px;
 
-      >svg{
+      > svg {
         font-size: 30px;
       }
     }
@@ -488,7 +526,29 @@
     }
   }
 
-  .active{
+  .active {
     display: flex;
+  }
+
+  .statusBar {
+    height: 100px;
+
+    > div {
+      width: 80px;
+      height: 80px;
+    }
+
+    > label {
+      position: fixed;
+      top: 10;
+      width: 70px;
+      height: 70px;
+      > img {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        cursor: pointer;
+      }
+    }
   }
 }

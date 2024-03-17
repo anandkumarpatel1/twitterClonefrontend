@@ -7,9 +7,6 @@ const User = ({follow}) => {
 
   return (
     <div className="profile">
-      {
-        console.log(follow)
-      }
       <SideBar />
       <ProfileMain />
       <HomeLeft />

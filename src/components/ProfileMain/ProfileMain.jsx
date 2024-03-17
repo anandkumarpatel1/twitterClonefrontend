@@ -9,6 +9,8 @@ import { UserState } from "../../context/context";
 import EditModal from "./EditModal";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../firebase";
 import axios from "axios";
 
 const ProfileMain = () => {
@@ -16,8 +18,10 @@ const ProfileMain = () => {
   const navigate = useNavigate();
   const [editModal, setEditModal] = useState(false);
   const [followed, setFollowed] = useState(false);
+  const [status, setStatus] = useState()
 
-  const { user,setLoading, loading, idUser, myPosts, chn, setChn } = UserState();
+  const { user, setLoading, loading, idUser, myPosts, chn, setChn } =
+    UserState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,7 +32,6 @@ const ProfileMain = () => {
     let follow;
     if (id) {
       follow = user.followings.indexOf(id);
-      console.log(follow);
     }
 
     if (follow === -1) {
@@ -41,7 +44,7 @@ const ProfileMain = () => {
 
   const followHandler = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       if (document.cookie) {
         const config = {
           headers: {
@@ -58,17 +61,41 @@ const ProfileMain = () => {
           config
         );
         toast.success(data?.message);
-        setChn(!chn)
-        setLoading(false)
+        setChn(!chn);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
-      setLoading(false)
-
+      setLoading(false);
     }
   };
 
+  const statusHandler = async () => {
+    try {
+      if (!id) {
+        const storageRef = ref(storage, `status/${user._id}`);
+        const uploadTask = uploadBytesResumable(storageRef, status);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+          },
+          (error) => {
+            toast(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            });
+          }
+        );
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
   return (
     <>
       {loading ? (
@@ -99,6 +126,7 @@ const ProfileMain = () => {
                   <img
                     src={id ? idUser?.avatar : user?.avatar}
                     alt="userImage"
+                    onClick={statusHandler}
                   />
                 </div>
                 <div className="profile-details">
@@ -110,19 +138,26 @@ const ProfileMain = () => {
               {id && id !== user._id ? (
                 <div className="edit-profile">
                   <p onClick={followHandler}>
-                    {
-                      console.log(followed)
-                    }
                     {followed ? "Unfollow" : "Follow"}
                   </p>
                 </div>
               ) : (
-                <div
-                  className="edit-profile"
-                  onClick={() => setEditModal(!editModal)}
-                >
-                  <p>Edit Profile</p>
-                </div>
+                <>
+                  <div
+                    className="edit-profile"
+                    onClick={() => setEditModal(!editModal)}
+                  >
+                    <p>Edit Profile</p>
+                  </div>
+                  <div
+                    className="edit-profile"
+                  >
+                    <input
+                      type="file"
+                      onChange={(e) => setStatus(e.target.files[0])}
+                    />
+                  </div>
+                </>
               )}
             </div>
             <p>{id ? idUser?.bio : user?.bio}</p>

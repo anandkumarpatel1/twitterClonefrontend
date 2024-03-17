@@ -6,6 +6,7 @@ import AllPosts from "./AllPosts";
 import MobileHeader from "./MobileHeader";
 import { UserState } from "../../context/context";
 import Loader from "../Loader/Loader";
+import StatusBar from "./StatusBar";
 
 const HomePost = () => {
   const { loading, allPosts, followingPosts } = UserState();
@@ -19,6 +20,7 @@ const HomePost = () => {
         <div className="homePost">
           <MobileHeader />
           <UpperHeader slider={slider} setSlider={setSlider} />
+          <StatusBar />
           <CreatePost />
           {slider === "all"
             ? allPosts?.map((item, index) => (
