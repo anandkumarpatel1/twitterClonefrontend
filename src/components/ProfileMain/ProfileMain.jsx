@@ -9,16 +9,15 @@ import { UserState } from "../../context/context";
 import EditModal from "./EditModal";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../firebase";
 import axios from "axios";
+import StatusModal from "./StatusModal";
 
 const ProfileMain = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
   const [editModal, setEditModal] = useState(false);
+  const [statusModal, setStatusModal] = useState(false);
   const [followed, setFollowed] = useState(false);
-  const [status, setStatus] = useState()
 
   const { user, setLoading, loading, idUser, myPosts, chn, setChn } =
     UserState();
@@ -72,29 +71,7 @@ const ProfileMain = () => {
   };
 
   const statusHandler = async () => {
-    try {
-      if (!id) {
-        const storageRef = ref(storage, `status/${user._id}`);
-        const uploadTask = uploadBytesResumable(storageRef, status);
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-          },
-          (error) => {
-            toast(error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            });
-          }
-        );
-      }
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
+    setStatusModal(!statusModal)
   };
   return (
     <>
@@ -148,14 +125,6 @@ const ProfileMain = () => {
                     onClick={() => setEditModal(!editModal)}
                   >
                     <p>Edit Profile</p>
-                  </div>
-                  <div
-                    className="edit-profile"
-                  >
-                    <input
-                      type="file"
-                      onChange={(e) => setStatus(e.target.files[0])}
-                    />
                   </div>
                 </>
               )}
@@ -225,6 +194,7 @@ const ProfileMain = () => {
         </div>
       )}
       {editModal && <EditModal setEditModal={setEditModal} />}
+      {statusModal && <StatusModal setStatusModal={setStatusModal} />}
     </>
   );
 };

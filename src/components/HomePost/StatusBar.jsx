@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { UserState } from "../../context/context";
 import "./HomePost.scss";
+import StatusModel from "./StatusModel";
 
 const StatusBar = () => {
-  const { user } = UserState();
+  const { user, loading, setLoading, chn, setChn } = UserState();
+  const [statusModel, setStatusModel] = useState(false);
+  
   return (
-    <div className="statusBar">
-      <div></div>
-      <label htmlFor="status">
+    <>
+      {statusModel && <StatusModel setStatusModel={setStatusModel} />}
+      <div className="statusBar" onClick={() => setStatusModel(true)}>
+        <div></div>
         <img src={user?.avatar} alt={user?.name} />
-      </label>
-
-      <input type="file" id="status" />
-    </div>
+      </div>
+    </>
   );
 };
 
