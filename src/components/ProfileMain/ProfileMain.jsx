@@ -85,7 +85,7 @@ const ProfileMain = () => {
             </div>
             <div>
               <h2>{id ? idUser?.name : user?.name}</h2>
-              <p>20 Post</p>
+              <p>{id ? idUser?.posts?.length : user?.posts?.length} Post</p>
             </div>
           </div>
 

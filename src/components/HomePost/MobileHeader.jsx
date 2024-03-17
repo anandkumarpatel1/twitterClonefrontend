@@ -49,15 +49,15 @@ const MobileHeader = () => {
               </div>
 
               <div onClick={() => navigate("/profile")}>
-                <p>Anand Kumar</p>
-                <p>@anandkumarpatel</p>
+                <p>{user?.name}</p>
+                <p>{user?.username}</p>
               </div>
               <div>
                 <p>
-                  <span>39</span> Following
+                  <span>{user?.followings.length}</span> Following
                 </p>
                 <p>
-                  <span>39</span> Follower
+                  <span>{user?.followers.length}</span> Follower
                 </p>
               </div>
             </div>
