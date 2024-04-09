@@ -185,6 +185,7 @@
       > div {
         display: flex;
         cursor: pointer;
+        flex-direction: column;
 
         > :first-child {
           font-weight: 700;
@@ -639,6 +640,21 @@
         height: 70px;
         border-radius: 100%;
         cursor: pointer;
+      }
+    }
+  }
+
+  .allPost {
+    > :nth-child(2) {
+      > :first-child {
+        > div {
+          display: flex;
+          cursor: pointer;
+          flex-direction: column;
+          > :nth-child(2) {
+            margin-left: 0px;
+          }
+        }
       }
     }
   }
