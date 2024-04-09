@@ -25,6 +25,10 @@ export const UserProvider = ({ children }) => {
     fetchFollowingPosts();
   }, [chn]);
 
+  // useEffect(() =>{
+  //   fetchUser()
+  // }, [])
+
   const fetchUser = async () => {
     setLoading(true);
     if (document.cookie) {
@@ -47,7 +51,6 @@ export const UserProvider = ({ children }) => {
           setUser(data?.user);
           setMyPosts(data?.posts);
           toast.success(data?.message);
-          navigate("/");
           setLoading(false);
         }
       } catch (error) {

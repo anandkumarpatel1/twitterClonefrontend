@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomePost.scss";
 import { SlOptions } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { UserState } from "../../context/context";
 import { toast } from "react-toastify";
 
 const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
+  const [option, setOption] = useState(false);
   const navigate = useNavigate();
   const { setLoading, setIdUser } = UserState();
 
@@ -41,6 +42,10 @@ const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
       setLoading(false);
     }
   };
+
+  const optionMenu = async () => {
+    setOption(!option);
+  };
   return (
     <div className="allPost">
       <div>
@@ -52,9 +57,17 @@ const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
             <p>{name}</p>
             <p>@{username}</p>
           </div>
-          <div>
+          <div onClick={optionMenu}>
             <SlOptions />
           </div>
+          {option && (
+              <div className="options">
+                <ul>
+                  <li>Delete</li>
+                  <li>Share</li>
+                </ul>
+              </div>
+            )}
         </div>
         <div>
           {postImg && <img src={postImg} alt="img" />}

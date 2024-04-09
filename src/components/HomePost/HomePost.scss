@@ -180,6 +180,7 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
+      position: relative;
 
       > div {
         display: flex;
@@ -195,7 +196,7 @@
         }
       }
 
-      > :last-child {
+      > :nth-child(2) {
         width: 30px;
         height: 30px;
         display: flex;
@@ -203,10 +204,29 @@
         align-items: center;
         border-radius: 100%;
         transition: all 0.2s;
+
+        &:hover {
+          background: rgb(29, 155, 240);
+        }
       }
 
-      > :last-child:hover {
-        background: rgb(29, 155, 240);
+      > .options {
+        position: absolute;
+        top: 20px;
+        right: 1px;
+        width: 100px;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        background: rgba(128, 128, 128, 0.735);
+        border: 1px solid gray;
+
+        > ul {
+          list-style: none;
+          > li {
+            margin: 8px;
+          }
+        }
       }
     }
 
@@ -283,7 +303,7 @@
   }
 }
 
-.statusModelHome{
+.statusModelHome {
   width: 100vw;
   height: 100%;
   background: rgba(129, 210, 203, 0.418);

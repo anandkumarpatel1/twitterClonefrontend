@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileMain.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaRegCalendarDays } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
@@ -15,9 +15,24 @@ import StatusModal from "./StatusModal";
 const ProfileMain = () => {
   const url = window.location.pathname;
   const navigate = useNavigate();
+  const location  = useLocation();
   const [editModal, setEditModal] = useState(false);
   const [statusModal, setStatusModal] = useState(false);
   const [followed, setFollowed] = useState(false);
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault(); // Cancel the event
+      event.returnValue = ''; // Required for Chrome
+      alert('Are you sure you want to reload this page?');
+      navigate('/') // Display the alert
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const { user, setLoading, loading, idUser, myPosts, chn, setChn } =
     UserState();
@@ -25,7 +40,7 @@ const ProfileMain = () => {
 
   useEffect(() => {
     followedFun();
-  }, [followed]);
+  }, [location]);
 
   const followedFun = () => {
     let follow;
@@ -43,7 +58,7 @@ const ProfileMain = () => {
 
   const followHandler = async () => {
     try {
-      setLoading(true);
+      setFollowed(!followed)
       if (document.cookie) {
         const config = {
           headers: {
@@ -60,7 +75,7 @@ const ProfileMain = () => {
           config
         );
         toast.success(data?.message);
-        setChn(!chn);
+        // setChn(!chn);
         setLoading(false);
       }
     } catch (error) {
@@ -107,7 +122,7 @@ const ProfileMain = () => {
                   />
                 </div>
                 <div className="profile-details">
-                  <h2>{id ? idUser?.name : user?.name}</h2>
+                  <h2>{id ? idUser?.name : user?.name}</h2>/
                   <p>@{id ? idUser?.username : user?.username}</p>
                 </div>
               </div>
