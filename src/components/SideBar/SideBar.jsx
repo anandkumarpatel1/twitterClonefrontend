@@ -20,9 +20,9 @@ const SideBar = () => {
     navigate('/profile')
   }
   const logoutHandler = () => {
-    navigate('/login')
+    navigate("/login");
     document.cookie = `token=${null};max-age= 0`;
-    toast.success('logout successfull')
+    toast.success("logout successfull");
   }
   return (
     <div className="sideBar">

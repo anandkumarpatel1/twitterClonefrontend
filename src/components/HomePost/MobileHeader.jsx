@@ -18,9 +18,10 @@ const MobileHeader = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
+    navigate("/login");
     document.cookie = `token=${null};max-age= 0`;
     toast.success("logout successfull");
-    navigate("/login");
+    console.log(document.cookie)
   };
   return (
     <>

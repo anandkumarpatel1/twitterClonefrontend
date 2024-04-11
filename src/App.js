@@ -15,21 +15,14 @@ import { ToastContainer } from "react-toastify";
 import User from "./pages/User/User";
 
 const App = () => {
-
   return (
     <>
       <ToastContainer position="top-center" autoClose={1000} />
       <BrowserRouter>
         <UserProvider>
           <Routes>
-            <Route
-              path="/login"
-              element={document.cookie ? <Navigate to="/" /> : <Login />}
-            />
-            <Route
-              path="/"
-              element={!document.cookie ? <Navigate to="/login" /> : <Home />}
-            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/user/:id" element={<User />} />

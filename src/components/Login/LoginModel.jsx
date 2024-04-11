@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginModel.scss";
 import { useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { UserState } from "../../context/context";
 import Loader from "../Loader/Loader";
+import { doc } from "firebase/firestore";
 
 const LoginModel = ({ setLoginModel }) => {
   const [username, setUsername] = useState("");
@@ -42,7 +43,7 @@ const LoginModel = ({ setLoginModel }) => {
         setUser(data?.user);
         setChn(!chn);
         toast.success(data?.message);
-        navigate('/')
+        navigate("/");
       }
     } catch (error) {
       toast.error(error?.response?.data?.message);

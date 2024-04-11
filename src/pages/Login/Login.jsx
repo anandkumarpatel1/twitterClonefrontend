@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsTwitterX } from "react-icons/bs";
 import "./Login.scss";
 import SignupModel from "../../components/Signup/SignupModel";
 import LoginModel from "../../components/Login/LoginModel";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signModel, setSignModel] = useState(false);
   const [loginModel, setLoginModel] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    if(document.cookie){
+      navigate('/')
+    }
+  }, [])
 
   return (
     <>
