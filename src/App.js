@@ -13,6 +13,7 @@ import Search from "./pages/Search/Search";
 import { UserProvider } from "./context/context";
 import { ToastContainer } from "react-toastify";
 import User from "./pages/User/User";
+import Loader from "./components/Loader/Loader";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/user/:id" element={<User />} />
+            <Route path="/loding" element={<Loader />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>

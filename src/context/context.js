@@ -25,10 +25,6 @@ export const UserProvider = ({ children }) => {
     fetchFollowingPosts();
   }, [chn]);
 
-  // useEffect(() =>{
-  //   fetchUser()
-  // }, [])
-
   const fetchUser = async () => {
     setLoading(true);
     if (document.cookie) {

@@ -10,10 +10,10 @@ import axios from "axios";
 import { UserState } from "../../context/context";
 import { toast } from "react-toastify";
 
-const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
+const AllPosts = ({ name, username, avatar, userId, desc, postImg, id }) => {
   const [option, setOption] = useState(false);
   const navigate = useNavigate();
-  const { setLoading, setIdUser } = UserState();
+  const { setLoading, setIdUser, allPosts, setChn, chn, user } = UserState();
 
   const userHandler = async () => {
     try {
@@ -43,6 +43,39 @@ const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
     }
   };
 
+  const deleteHandler = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+        },
+        withCredentials: true,
+        sameSite: "None",
+      };
+
+      const { data } = await axios.delete(
+        `https://backendtwitter.vercel.app/api/v1/users/delete/${id}`,
+        config
+      );
+
+      console.log(data);
+
+      if (data) {
+        allPosts.forEach((element) => {
+          if (element._id) {
+            setChn(!chn);
+          }
+        });
+
+        toast.success(data?.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      console.log(error);
+    }
+  };
+
   const optionMenu = async () => {
     setOption(!option);
   };
@@ -61,13 +94,15 @@ const AllPosts = ({ name, username, avatar, userId, desc, postImg }) => {
             <SlOptions />
           </div>
           {option && (
-              <div className="options">
-                <ul>
-                  <li>Delete</li>
-                  <li>Share</li>
-                </ul>
-              </div>
-            )}
+            <div className="options">
+              <ul>
+                {userId === user?._id && (
+                  <li onClick={deleteHandler}>Delete</li>
+                )}
+                <li>Share</li>
+              </ul>
+            </div>
+          )}
         </div>
         <div>
           {postImg && <img src={postImg} alt="img" />}

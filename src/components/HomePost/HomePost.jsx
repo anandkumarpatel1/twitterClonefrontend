@@ -22,10 +22,25 @@ const HomePost = () => {
           <UpperHeader slider={slider} setSlider={setSlider} />
           <StatusBar />
           <CreatePost />
+          {allPosts && allPosts.length < 1 ? (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "15px",
+                marginTop: "20px",
+              }}
+            >
+              {" "}
+              No posts found.
+            </p>
+          ) : (
+            ""
+          )}
           {slider === "all"
             ? allPosts?.map((item, index) => (
                 <AllPosts
                   key={index}
+                  id={item._id}
                   name={item?.admin?.name}
                   username={item?.admin?.username}
                   avatar={item?.admin?.avatar}

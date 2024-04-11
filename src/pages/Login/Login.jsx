@@ -11,11 +11,11 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() =>{
-    if(document.cookie){
-      navigate('/')
+  useEffect(() => {
+    if (document.cookie) {
+      navigate("/");
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -29,11 +29,11 @@ const Login = () => {
           <p>Happening now</p>
           <p>Join today.</p>
           <div>
-            <button onClick={() => setSignModel(true)} >Create account</button>
+            <button onClick={() => setSignModel(true)}>Create account</button>
             <div>
               <hr /> or <hr />
             </div>
-            <button onClick={() => setLoginModel(true)} >Sign in</button>
+            <button onClick={() => setLoginModel(true)}>Sign in</button>
           </div>
         </div>
       </div>
