@@ -122,7 +122,7 @@ const ProfileMain = () => {
                   />
                 </div>
                 <div className="profile-details">
-                  <h2>{id ? idUser?.name : user?.name}</h2>/
+                  <h2>{id ? idUser?.name : user?.name}</h2>
                   <p>@{id ? idUser?.username : user?.username}</p>
                 </div>
               </div>
