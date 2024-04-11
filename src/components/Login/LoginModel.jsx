@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginModel.scss";
+import { useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -11,6 +12,7 @@ const LoginModel = ({ setLoginModel }) => {
   const [password, setPassword] = useState("");
 
   const { loading, setLoading, setUser, setChn, chn } = UserState();
+  const navigate = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ const LoginModel = ({ setLoginModel }) => {
         setUser(data?.user);
         setChn(!chn);
         toast.success(data?.message);
+        navigate('/')
       }
     } catch (error) {
       toast.error(error?.response?.data?.message);

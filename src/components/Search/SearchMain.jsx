@@ -14,6 +14,9 @@ const SearchMain = () => {
   const searchHandler = async (e) => {
     setSearch(e.target.value);
     setLoading(true);
+    setTimeout(() => {
+      
+    }, 500);
     try {
       const config = {
         headers: {

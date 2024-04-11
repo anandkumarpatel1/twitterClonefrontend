@@ -52,6 +52,7 @@ export const UserProvider = ({ children }) => {
           setMyPosts(data?.posts);
           toast.success(data?.message);
           setLoading(false);
+          navigate('/')
         }
       } catch (error) {
         toast.error(error?.response?.data?.message);
