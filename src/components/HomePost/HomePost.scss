@@ -153,6 +153,7 @@
   width: 100%;
   font-family: sans-serif;
   border-bottom: 1px solid gray;
+  position: relative;
 
   > :first-child {
     background: #000;
@@ -251,9 +252,101 @@
       display: flex;
       justify-content: space-between;
 
+      > svg {
+        cursor: pointer;
+      }
+
       > :last-child {
         transform: rotate(90deg);
         z-index: 1;
+      }
+    }
+  }
+
+  > .model {
+    width: 450px;
+    height: 70%;
+    background: rgba(29, 156, 240, 0.404);
+    border-radius: 10px;
+    position: absolute;
+    border-radius: 10px;
+    top: 80px;
+    left: 14.5%;
+
+    > :first-child {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 10px;
+      padding: 10px 20px;
+      background: rgb(29, 155, 240);
+      width: 100%;
+      > p {
+        font-weight: 600;
+        font-size: 18px;
+        color: white;
+      }
+      > svg {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    > .comment {
+      width: 100%;
+      padding: 10px;
+
+      > :first-child {
+        display: flex;
+        justify-content: space-around;
+
+        > input {
+          outline: none;
+          border: none;
+          width: 80%;
+          padding: 8px;
+          border-radius: 10px;
+          background: #00000070;
+          color: white;
+        }
+
+        >button{
+          background: #00000070;
+          outline: none;
+          border: none;
+          width: 80px;
+          border-radius: 10px;
+          color: white;
+          font-weight: 600;
+        }
+      }
+
+      >.commentCard{
+        display: flex;
+        align-items: center;
+        background: #00000070;
+        margin-top: 10px;
+        padding: 10px 0;
+        border-radius: 10px;
+
+        >img{
+          width: 50px;
+          height: 50px;
+          border-radius: 100%;
+        }
+
+        >div{
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+
+          >div{
+            display: flex;
+            >:last-child{
+              margin-left: 10px;
+            }
+          }
+        }
       }
     }
   }
@@ -656,6 +749,12 @@
           }
         }
       }
+    }
+
+    > .model {
+      width: 98%;
+      left: 1%;
+      overflow-y: scroll;
     }
   }
 }

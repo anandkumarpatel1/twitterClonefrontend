@@ -15,6 +15,7 @@ export const UserProvider = ({ children }) => {
   const [myPosts, setMyPosts] = useState();
   const [followingPosts, setFollowingPosts] = useState();
   const [searchUser, setSearchUser] = useState();
+  const [comments, setComments] = useState();
 
   const navigate = useNavigate();
 
@@ -161,6 +162,8 @@ export const UserProvider = ({ children }) => {
         setFollowingPosts,
         searchUser,
         setSearchUser,
+        comments,
+        setComments,
       }}
     >
       {children}
