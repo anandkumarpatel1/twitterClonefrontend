@@ -191,6 +191,7 @@ const ProfileMain = () => {
                 userId={item?.admin?._id}
                 desc={item?.desc}
                 postImg={item?.postImg}
+                id={item?._id}
               />
             ))}
           {!id &&
@@ -204,6 +205,7 @@ const ProfileMain = () => {
                 userId={user?._id}
                 desc={item?.desc}
                 postImg={item?.postImg}
+                id={item?._id}
               />
             ))}
         </div>
