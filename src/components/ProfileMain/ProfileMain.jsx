@@ -192,6 +192,9 @@ const ProfileMain = () => {
                 desc={item?.desc}
                 postImg={item?.postImg}
                 id={item?._id}
+                commentCount={item?.comments?.length}
+                retweetsCount={item?.retweets}
+                likesCount={item?.likes}
               />
             ))}
           {!id &&
@@ -206,6 +209,9 @@ const ProfileMain = () => {
                 desc={item?.desc}
                 postImg={item?.postImg}
                 id={item?._id}
+                commentCount={item?.comments?.length}
+                retweetsCount={item?.retweets}
+                likesCount={item?.likes}
               />
             ))}
         </div>

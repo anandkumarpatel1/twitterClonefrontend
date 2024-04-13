@@ -30,7 +30,6 @@ const HomePost = () => {
                 marginTop: "20px",
               }}
             >
-              {" "}
               No posts found.
             </p>
           ) : (
@@ -47,6 +46,9 @@ const HomePost = () => {
                   userId={item?.admin?._id}
                   desc={item?.desc}
                   postImg={item?.postImg}
+                  commentCount={item?.comments?.length}
+                  retweetsCount={item?.retweets}
+                  likesCount={item?.likes}
                 />
               ))
             : followingPosts?.map((item, index) => (
@@ -58,6 +60,9 @@ const HomePost = () => {
                   userId={item?.admin?._id}
                   desc={item?.desc}
                   postImg={item?.postImg}
+                  commentCount={item?.comments?.length}
+                  retweetsCount={item?.retweets}
+                  likesCount={item?.likes}
                 />
               ))}
         </div>
